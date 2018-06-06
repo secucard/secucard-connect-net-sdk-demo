@@ -31,22 +31,25 @@
             var container = new Create_Container().Run(paymentClient, customer);
 
             // Create a new payment transaction with secupay debit
-            new Create_Secupay_Debit_Transaction().Run(paymentClient, customer, container);
+            var debit = new Create_Secupay_Debit_Transaction().Run(paymentClient, customer, container);
 
             // Create a new payment transaction with secupay invoice
-            new Create_Secupay_Invoice_Transaction().Run(paymentClient, customer);
+            var invoice = new Create_Secupay_Invoice_Transaction().Run(paymentClient, customer);
 
             // Create a new payment transaction with secupay prepay
             var prepay = new Create_Secupay_Prepay_Transaction().Run(paymentClient, customer);
 
+            // Create a new payment transaction with secupay credit card
+            var creditcard = new Create_Secupay_Creditcard_Transaction().Run(paymentClient, customer);
+
             // Cancel a created payment transaction (with secupay prepay)
             new Cancel_Secupay_Prepay_Transaction().Run(paymentClient, prepay);
 
-            // Create a new payment transaction with secupay credit card
-            var creditcardId = new Create_Secupay_Creditcard_Transaction().Run(paymentClient, customer);
-
             // Get the status of a created payment transaction (with credit card)
-            new Get_Secupay_Creditcard_Transaction().Run(paymentClient, creditcardId);
+            new Get_Secupay_Creditcard_Transaction().Run(paymentClient, creditcard.Id);
+
+            // Set shipping information for the created debit transaction
+            new Set_Shipping_Information().Run(paymentClient, debit);
 
             // List all created customers
             new Get_Customer_List().Run(paymentClient);
