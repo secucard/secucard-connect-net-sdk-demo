@@ -6,7 +6,7 @@
 
     public class Create_Secupay_Creditcard_Transaction
     {
-        public string Run(SecucardConnect client, Customer customer)
+        public SecupayCreditcard Run(SecucardConnect client, Customer customer)
         {
             Console.WriteLine(Environment.NewLine + "### Create secupay creditcard transaction sample ### " + Environment.NewLine);
 
@@ -38,10 +38,10 @@
                 Console.WriteLine("Creditcard creation failed");
             }
 
-            return creditcard.Id;
-
             // To cancel the transaction you would use:
             // service.Cancel(creditcard.Id);
+
+            return creditcard;
         }
     }
 }

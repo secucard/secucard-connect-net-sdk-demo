@@ -6,7 +6,7 @@
 
     public class Create_Secupay_Debit_Transaction
     {
-        public void Run(SecucardConnect client, Customer customer, Container container)
+        public SecupayDebit Run(SecucardConnect client, Customer customer, Container container)
         {
             Console.WriteLine(Environment.NewLine + "### Create secupay debit transaction sample ### " + Environment.NewLine);
 
@@ -70,6 +70,8 @@
 
             // To cancel the transaction you would use:
             // service.Cancel(debit.Id);
+
+            return debit;
         }
     }
 }

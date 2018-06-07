@@ -6,7 +6,7 @@
 
     public class Create_Secupay_Invoice_Transaction
     {
-        public void Run(SecucardConnect client, Customer customer)
+        public SecupayInvoice Run(SecucardConnect client, Customer customer)
         {
             Console.WriteLine(Environment.NewLine + "### Create secupay invoice transaction sample ### " + Environment.NewLine);
 
@@ -40,6 +40,8 @@
 
             // To cancel the transaction you would use:
             // service.Cancel(invoice.Id);
+
+            return invoice;
         }
     }
 }
