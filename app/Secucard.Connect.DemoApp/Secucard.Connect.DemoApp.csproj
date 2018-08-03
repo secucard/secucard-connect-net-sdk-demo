@@ -63,7 +63,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\secucard.connect\Secucard.Connect.csproj">
+    <ProjectReference Include="..\..\..\secucard-connect-net-sdk\lib\Secucard.Connect\Secucard.Connect.csproj">
       <Project>{067cc76b-1657-49aa-92a7-3cb2ba6586e9}</Project>
       <Name>Secucard.Connect</Name>
     </ProjectReference>
