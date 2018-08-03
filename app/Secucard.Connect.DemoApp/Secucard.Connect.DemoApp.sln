@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Secucard.Connect.DemoApp", "Secucard.Connect.DemoApp.csproj", "{3621CB3B-9B47-4424-B8B7-877DA41CA8F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Secucard.Connect", "..\..\..\secucard-connect-net-sdk\lib\Secucard.Connect\Secucard.Connect.csproj", "{067CC76B-1657-49AA-92A7-3CB2BA6586E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3621CB3B-9B47-4424-B8B7-877DA41CA8F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3621CB3B-9B47-4424-B8B7-877DA41CA8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3621CB3B-9B47-4424-B8B7-877DA41CA8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3621CB3B-9B47-4424-B8B7-877DA41CA8F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{067CC76B-1657-49AA-92A7-3CB2BA6586E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{067CC76B-1657-49AA-92A7-3CB2BA6586E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{067CC76B-1657-49AA-92A7-3CB2BA6586E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{067CC76B-1657-49AA-92A7-3CB2BA6586E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {707A983A-278A-4972-AAA3-8B35FF3305AE}
+	EndGlobalSection
+EndGlobal

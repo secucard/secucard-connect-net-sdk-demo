@@ -57,6 +57,9 @@
             // List all created payment containers
             new Get_Container_List().Run(paymentClient);
 
+            // List all created payment transactions
+            new Get_Payment_Transactions_List().Run(paymentClient);
+
             // Close the client
             paymentClient.Close();
 
