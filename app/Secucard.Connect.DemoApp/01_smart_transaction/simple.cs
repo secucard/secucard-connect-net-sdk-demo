@@ -45,6 +45,7 @@
             transactionService.TransactionCashierEvent += SmartTransactionCashierEvent;
 
             // select an ident
+            /*
             var availableIdents = identService.GetList(null);
             if (availableIdents == null || availableIdents.Count == 0)
             {
@@ -53,6 +54,11 @@
             var ident = availableIdents.List.First(o => o.Id == "smi_1");
             ident.Value = "pdo28hdal";
 
+            var selectedIdents = new List<Ident> { ident };
+            */
+
+            // alternative: add a secucard number
+            var ident = new Ident {Type = Ident.TypeCard, Value = "9276004428014741" };
             var selectedIdents = new List<Ident> { ident };
 
             // prepare basket with items locally
@@ -81,14 +87,14 @@
                 Ean = "5060215249805",
                 Desc = "desc2",
                 Quantity = 1m,
-                PriceOne = 999,
+                PriceOne = 999,          
                 Tax = 19,
                 Groups = groups
             });
             basket.AddProduct(new Text { Id = 1, ParentId = 2, Desc = "text1" });
             basket.AddProduct(new Text { Id = 2, ParentId = 2, Desc = "text2" });
 
-            var basketInfo = new BasketInfo { Sum = 1, Currency = "EUR" };
+            var basketInfo = new BasketInfo { Sum = 10994, Currency = "EUR" };
 
             // build transaction object
             var newTrans = new Transaction
@@ -126,6 +132,9 @@
             //var cancelCash = transactionService.CancelPayment(transaction.ReceiptNumber);
 
             smartClient.Close();
+
+            Console.WriteLine(Environment.NewLine + "Samples done");
+            Console.Read();
         }
 
         /// <summary>

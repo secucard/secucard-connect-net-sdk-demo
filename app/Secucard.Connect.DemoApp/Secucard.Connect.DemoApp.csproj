@@ -54,7 +54,6 @@
     <Compile Include="02_client_payments\Get_Customer_List.cs" />
     <Compile Include="02_client_payments\Get_Secupay_Creditcard_Transaction.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="02_client_payments\Run_Sample.cs" />
   </ItemGroup>
   <ItemGroup>
