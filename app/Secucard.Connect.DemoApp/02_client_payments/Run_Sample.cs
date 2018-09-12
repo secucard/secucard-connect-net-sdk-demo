@@ -24,6 +24,8 @@
             var paymentClient = SecucardConnect.Create(_clientConfiguration);
             paymentClient.Open();
 
+           // var debit = new Get_Secupay_Debit_Transaction().Run(paymentClient, "eykumsxtgbys3053779");
+
             // Create a new customer
             var customer = new Create_Customer().Run(paymentClient);
 
@@ -64,7 +66,7 @@
             paymentClient.Close();
 
             Console.WriteLine(Environment.NewLine + "Samples done");
-            Console.Read();
+            Console.ReadKey();
         }
 
         /// <summary>
