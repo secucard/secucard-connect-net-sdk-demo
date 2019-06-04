@@ -2,7 +2,8 @@
 {
     using System;
     using Product.Payment.Model;
-    using System.Diagnostics;
+    using System.IO;
+    using Secucard.Connect.Product.Document.Model;
 
     public class Create_Secupay_Debit_Transaction
     {
@@ -10,8 +11,8 @@
         {
             Console.WriteLine(Environment.NewLine + "### Create secupay debit transaction sample ### " + Environment.NewLine);
 
+            /*
             var service = client.Payment.Secupaydebits;
-
             var debit = new SecupayDebit();
             debit.Amount = 245; // Amount in cents (or in the smallest unit of the given currency)
             debit.Currency = "EUR"; // The ISO-4217 code of the currency
@@ -68,10 +69,25 @@
                 Console.WriteLine("Debit creation failed");
             }
 
+    */
+
+            var paymentId = "orwrwsuyqbcs3063097";
+            var service = client.Payment.Secupaydebits;
+            var service2 = client.Document.Uploads;
+
+            var file = new Upload { Content = Convert.ToBase64String(File.ReadAllBytes(@"02_client_payments\test2.pdf")) };
+
+            var uploadedId = service2.Upload(file);
+            Console.WriteLine($"UploadedId: {uploadedId}");
+
+            service.AssignExternalInvoicePdf(paymentId, uploadedId, false);
+
+
+
             // To cancel the transaction you would use:
             // service.Cancel(debit.Id);
 
-            return debit;
+            return null;
         }
     }
 }

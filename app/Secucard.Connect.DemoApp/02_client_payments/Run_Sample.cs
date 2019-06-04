@@ -32,6 +32,10 @@
             // Create a new payment container (only needed for secupay debit, not for prepay)
             var container = new Create_Container().Run(paymentClient, customer);
 
+            // Create a new payment transaction with secupay payout
+            var customer2 = new Create_Customer().Run(paymentClient);
+            var payout = new Create_Secupay_Payout_Transaction().Run(paymentClient, customer2, container);
+            
             // Create a new payment transaction with secupay debit
             var debit = new Create_Secupay_Debit_Transaction().Run(paymentClient, customer, container);
 
