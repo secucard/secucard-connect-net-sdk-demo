@@ -29,7 +29,7 @@
             item1.ItemType = TransactionList.ItemTypeTransactionPayout;
             item1.ReferenceId = "123.1";
             item1.Name = "Payout Purpose 1";
-            item1.TransactionHash = "ckaidxxxfskc1176505";
+            item1.TransactionHash = "ckaidxxxfskc1176505"; // you can use TransactionHash or TransactionId, if you transmit both only TransactionId will be used.
             item1.Total = 100;
             payout.TransactionList[0] = item1;
 
@@ -38,7 +38,7 @@
             item2.ItemType = TransactionList.ItemTypeTransactionPayout;
             item2.ReferenceId = "123.2";
             item2.Name = "Payout Purpose 2";
-            item2.TransactionId = "PCI_WR67G325XTG2R45JJDNBG048PW4BN4";
+            item2.TransactionId = "PCI_WR67G325XTG2R45JJDNBG048PW4BN4"; // you can use TransactionHash or TransactionId, if you transmit both only TransactionId will be used.
             item2.ContainerId = container.Id; // f.e. "PCT_E4Z8U4W4J2N7MFV270ZAVWZFNJYHA3";
             item2.Total = 100;
             payout.TransactionList[1] = item2;

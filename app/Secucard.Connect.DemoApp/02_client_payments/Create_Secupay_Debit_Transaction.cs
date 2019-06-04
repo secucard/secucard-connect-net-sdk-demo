@@ -10,8 +10,7 @@
         public SecupayDebit Run(SecucardConnect client, Customer customer, Container container)
         {
             Console.WriteLine(Environment.NewLine + "### Create secupay debit transaction sample ### " + Environment.NewLine);
-
-            /*
+            
             var service = client.Payment.Secupaydebits;
             var debit = new SecupayDebit();
             debit.Amount = 245; // Amount in cents (or in the smallest unit of the given currency)
@@ -56,7 +55,7 @@
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error message: {ex.Message}");
+                Console.WriteLine($"Error message: {ex.Message}");
             }
 
             if (debit.Id != string.Empty)
@@ -67,12 +66,12 @@
             else
             {
                 Console.WriteLine("Debit creation failed");
+                return null;
             }
 
-    */
+    
 
-            var paymentId = "orwrwsuyqbcs3063097";
-            var service = client.Payment.Secupaydebits;
+            var paymentId = debit.Id;
             var service2 = client.Document.Uploads;
 
             var file = new Upload { Content = Convert.ToBase64String(File.ReadAllBytes(@"02_client_payments\test2.pdf")) };
