@@ -24,6 +24,7 @@
             // otherwise it will be assinged to the plattform contract, add the follwing line:
             // payout.Contract = "PCR_XXXX";
             
+            // Sample for create a payout based on a payment instrument of the completed investment
             var item1 = new TransactionList();
             item1.ItemType = TransactionList.ItemTypeTransactionPayout;
             item1.ReferenceId = "123.1";
@@ -31,21 +32,23 @@
             item1.TransactionHash = "ckaidxxxfskc1176505";
             item1.Total = 100;
             payout.TransactionList[0] = item1;
-            
+
+            // Sample for create a payout based on a completed investment with a new bank account
             var item2 = new TransactionList();
             item2.ItemType = TransactionList.ItemTypeTransactionPayout;
             item2.ReferenceId = "123.2";
             item2.Name = "Payout Purpose 2";
             item2.TransactionId = "PCI_WR67G325XTG2R45JJDNBG048PW4BN4";
-            item2.ContainerId = "PCT_E4Z8U4W4J2N7MFV270ZAVWZFNJYHA3";
+            item2.ContainerId = container.Id; // f.e. "PCT_E4Z8U4W4J2N7MFV270ZAVWZFNJYHA3";
             item2.Total = 100;
             payout.TransactionList[1] = item2;
 
+            // Sample for create a payout with a new bank account (and investor / payment customer)
             var item3 = new TransactionList();
             item3.ItemType = TransactionList.ItemTypeTransactionPayout;
             item3.ReferenceId = "123.3";
             item3.Name = "Payout Purpose 3";
-            item3.ContainerId = "PCT_E4Z8U4W4J2N7MFV270ZAVWZFNJYHA3";
+            item3.ContainerId = container.Id; // f.e. "PCT_E4Z8U4W4J2N7MFV270ZAVWZFNJYHA3";
             item3.Total = 100;
             payout.TransactionList[2] = item3;
 
