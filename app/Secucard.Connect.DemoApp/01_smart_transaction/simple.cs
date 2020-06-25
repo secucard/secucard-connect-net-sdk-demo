@@ -1,4 +1,4 @@
-﻿namespace Secucard.Connect.DemoApp._01_smart_transaction
+namespace Secucard.Connect.DemoApp._01_smart_transaction
 {
     using Auth;
     using Auth.Model;
@@ -75,8 +75,8 @@
                 ArticleNumber = "3378",
                 Ean = "5060215249804",
                 Desc = "desc1",
-                Quantity = 5m,
-                PriceOne = 1999,
+                Quantity = 1,
+                PriceOne = 1,
                 Tax = 7,
                 Groups = groups
             });
@@ -86,28 +86,27 @@
                 ArticleNumber = "art2",
                 Ean = "5060215249805",
                 Desc = "desc2",
-                Quantity = 1m,
-                PriceOne = 999,          
+                Quantity = 1,
+                PriceOne = 1,          
                 Tax = 19,
                 Groups = groups
             });
-            basket.AddProduct(new Text { Id = 1, ParentId = 2, Desc = "text1" });
-            basket.AddProduct(new Text { Id = 2, ParentId = 2, Desc = "text2" });
 
-            var basketInfo = new BasketInfo { Sum = 10994, Currency = "EUR" };
+            var basketInfo = new BasketInfo { Sum = 2, Currency = "EUR" };
 
             // build transaction object
             var newTrans = new Transaction
             {
                 BasketInfo = basketInfo,
                 Basket = basket,
-                Idents = selectedIdents,
                 MerchantRef = "merchant21",
                 TransactionRef = "transaction99"
             };
 
             // create transaction on server
             var transaction = transactionService.Create(newTrans);
+
+            Console.WriteLine("transaction created: " + transaction.ToString());
 
             // you may edit some transaction data and update
             //newTrans.MerchantRef = "merchant";
@@ -119,14 +118,23 @@
             var type = TransactionsService.TYPE_DEMO;
 
             // start transaction (this takes some time, consider another thread) 
-            var result = transactionService.Start(transaction.Id, type);
+            try
+            {
+                var result = transactionService.Start(transaction.Id, type);
+                Console.WriteLine("transaction start: " + result.ToString());
+            } catch (Exception ex)
+            {
+                Console.WriteLine("ex: " + ex.ToString());
+                smartClient.Close();
+                Console.Read();
+                return;
+            }
 
-            Console.WriteLine("transaction start: " + result.ToString());
 
             // cancel loyalty transaction
-            var cancelResult = transactionService.Cancel(transaction.Id);
+            //       var cancelResult = transactionService.Cancel(transaction.Id);
 
-            Console.WriteLine("transaction cancel: " + cancelResult.ToString());
+            //        Console.WriteLine("transaction cancel: " + cancelResult.ToString());
 
             // cancel cash transaction
             //var cancelCash = transactionService.CancelPayment(transaction.ReceiptNumber);
@@ -195,7 +203,7 @@
             {
                 return (ClientCredentials)GetCredentials();
             }
-
+            /*
             public new Token GetCurrent()
             {
                 return (Token)MemoryDataStorage.LoadFromFile(Path.GetTempPath() + "token.storage").Get("token");
@@ -206,6 +214,7 @@
                 _storage.Save("token", token);
                 (_storage as MemoryDataStorage).SaveToFile(Path.GetTempPath() + "token.storage");
             }
+            */
         }
     }
 }
