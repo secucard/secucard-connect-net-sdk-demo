@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="01_smart_transaction\simple.cs" />
     <Compile Include="02_client_payments\Capture_Debit_Transaction.cs" />
+    <Compile Include="02_client_payments\Create_Secupay_Sofort_Transaction.cs" />
+    <Compile Include="02_client_payments\Create_Sub_Contract.cs" />
     <Compile Include="02_client_payments\Create_Secupay_Payout_Transaction.cs" />
     <Compile Include="02_client_payments\Get_Payment_Transactions_List.cs" />
     <Compile Include="02_client_payments\Get_Secupay_Debit_Transaction.cs" />

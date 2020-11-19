@@ -45,7 +45,7 @@
                 Debug.WriteLine($"Error message: {ex.Message}");
             }
 
-            if (container.Id != string.Empty)
+            if (!string.IsNullOrEmpty(container.Id))
             {
                 Console.WriteLine($"Created Container with id: {container.Id}");
                 Console.WriteLine($"Container data: {container.ToString()}");

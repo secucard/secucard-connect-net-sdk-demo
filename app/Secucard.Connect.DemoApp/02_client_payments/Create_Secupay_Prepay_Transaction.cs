@@ -13,6 +13,7 @@
             var service = client.Payment.Secupayprepays;
 
             var prepay = new SecupayPrepay();
+            prepay.Demo = true;
             prepay.Amount = 100; // Amount in cents (or in the smallest unit of the given currency)
             prepay.Currency = "EUR"; // The ISO-4217 code of the currency
             prepay.Purpose = "Your purpose from TestShopName";
@@ -35,7 +36,7 @@
                 Debug.WriteLine($"Error message: {ex.Message}");
             }
 
-            if (prepay.Id != string.Empty)
+            if (!string.IsNullOrEmpty(prepay.Id))
             {
                 Console.WriteLine($"Created secupay prepay transaction with id: {prepay.Id}");
                 Console.WriteLine($"Prepay data: {prepay.ToString()}");

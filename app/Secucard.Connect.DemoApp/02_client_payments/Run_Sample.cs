@@ -1,4 +1,4 @@
-﻿namespace Secucard.Connect.DemoApp._02_client_payments
+namespace Secucard.Connect.DemoApp._02_client_payments
 {
     using Auth;
     using Auth.Model;
@@ -24,7 +24,10 @@
             var paymentClient = SecucardConnect.Create(_clientConfiguration);
             paymentClient.Open();
 
-           // var debit = new Get_Secupay_Debit_Transaction().Run(paymentClient, "eykumsxtgbys3053779");
+            // Create a new customer
+            var sub_contract = new Create_Sub_Contract().Run(paymentClient);
+            
+            // var debit = new Get_Secupay_Debit_Transaction().Run(paymentClient, "eykumsxtgbys3053779");
 
             // Create a new customer
             var customer = new Create_Customer().Run(paymentClient);
@@ -47,6 +50,9 @@
 
             // Create a new payment transaction with secupay credit card
             var creditcard = new Create_Secupay_Creditcard_Transaction().Run(paymentClient, customer);
+
+            // Create a new payment transaction with secupay sofort
+            var sofort = new Create_Secupay_Sofort_Transaction().Run(paymentClient, customer);
 
             // Cancel a created payment transaction (with secupay prepay)
             new Cancel_Secupay_Prepay_Transaction().Run(paymentClient, prepay);

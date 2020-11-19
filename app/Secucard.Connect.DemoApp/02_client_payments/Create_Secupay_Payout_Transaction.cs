@@ -18,6 +18,8 @@
             payout.Purpose = "Payout Test #3";
             payout.OrderId = "12345"; // The shop order id
             payout.Customer = customer.Id;
+            payout.RedirectUrl = new RedirectUrl {
+            };
             payout.TransactionList = new TransactionList[3]; // We want to store two items
 
             // if you want to create payout payment for a cloned contract (contract that you created by cloning main contract),
@@ -61,7 +63,7 @@
                 Console.WriteLine($"Error message: {ex.Message}");
             }
 
-            if (payout.Id != string.Empty)
+            if (!string.IsNullOrEmpty(payout.Id))
             {
                 Console.WriteLine($"Created secupay payout transaction with id: {payout.Id}");
                 Console.WriteLine($"Payout data: {payout.ToString()}");

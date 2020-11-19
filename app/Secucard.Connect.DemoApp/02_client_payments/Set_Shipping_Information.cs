@@ -14,6 +14,7 @@
 
             try
             {
+                Console.WriteLine($"Try to set shipping information with id: {debit.Id}");
                 var data = new ShippingInformation();
 
                 // Set the invoice number (optional, but recommended)

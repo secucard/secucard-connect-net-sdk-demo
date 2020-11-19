@@ -51,7 +51,7 @@
                 Debug.WriteLine($"Error message: {ex.Message}");
             }
 
-            if (customer.Id != string.Empty)
+            if (!string.IsNullOrEmpty(customer.Id))
             {
                 Console.WriteLine($"Created Customer with id: {customer.Id}");
                 Console.WriteLine($"Customer data: {customer.ToString()}");

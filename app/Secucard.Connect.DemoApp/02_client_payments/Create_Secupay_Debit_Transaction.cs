@@ -13,6 +13,7 @@
             
             var service = client.Payment.Secupaydebits;
             var debit = new SecupayDebit();
+            debit.Demo = true;
             debit.Amount = 245; // Amount in cents (or in the smallest unit of the given currency)
             debit.Currency = "EUR"; // The ISO-4217 code of the currency
             debit.Purpose = "Your purpose from TestShopName";
@@ -36,9 +37,9 @@
             article.ItemType = Basket.ItemTypeArticle;
             article.Name = "Testname 1";
             article.PriceOne = 25;
-            article.Quantity = 2;
+            article.Quantity = 4;
             article.Tax = 19;
-            article.Total = 50;
+            article.Total = 100;
             debit.Basket[0] = article;
 
             // Add the shipping costs
@@ -58,10 +59,11 @@
                 Console.WriteLine($"Error message: {ex.Message}");
             }
 
-            if (debit.Id != string.Empty)
+            if (!string.IsNullOrEmpty(debit.Id))
             {
                 Console.WriteLine($"Created secupay debit transaction with id: {debit.Id}");
                 Console.WriteLine($"Debit data: {debit.ToString()}");
+                Console.WriteLine($"CHECKOUT URL: {debit.RedirectUrl.UrlIframe}");
             }
             else
             {
@@ -86,7 +88,7 @@
             // To cancel the transaction you would use:
             // service.Cancel(debit.Id);
 
-            return null;
+            return debit;
         }
     }
 }

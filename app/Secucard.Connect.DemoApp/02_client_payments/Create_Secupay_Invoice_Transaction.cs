@@ -13,6 +13,7 @@
             var service = client.Payment.Secupayinvoices;
 
             var invoice = new SecupayInvoice();
+            invoice.Demo = true;
             invoice.Amount = 100; // Amount in cents (or in the smallest unit of the given currency)
             invoice.Currency = "EUR"; // The ISO-4217 code of the currency
             invoice.Purpose = "Your purpose from TestShopName";
@@ -28,10 +29,11 @@
                 Debug.WriteLine($"Error message: {ex.Message}");
             }
 
-            if (invoice.Id != string.Empty)
+            if (!string.IsNullOrEmpty(invoice.Id))
             {
                 Console.WriteLine($"Created secupay invoice transaction with id: {invoice.Id}");
                 Console.WriteLine($"Invoice data: {invoice.ToString()}");
+                Console.WriteLine($"CHECKOUT URL: {invoice.RedirectUrl.UrlIframe}");
             }
             else
             {

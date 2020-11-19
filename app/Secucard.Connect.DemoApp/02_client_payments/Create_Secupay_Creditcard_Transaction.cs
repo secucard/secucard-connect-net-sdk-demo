@@ -13,6 +13,7 @@
             var service = client.Payment.Secupaycreditcards;
 
             var creditcard = new SecupayCreditcard();
+            creditcard.Demo = true;
             creditcard.Amount = 100; // Amount in cents (or in the smallest unit of the given currency)
             creditcard.Currency = "EUR"; // The ISO-4217 code of the currency
             creditcard.Purpose = "Your purpose from TestShopName";
@@ -28,10 +29,11 @@
                 Debug.WriteLine($"Error message: {ex.Message}");
             }
 
-            if (creditcard.Id != string.Empty)
+            if (!string.IsNullOrEmpty(creditcard.Id))
             {
                 Console.WriteLine($"Created secupay creditcard transaction with id: {creditcard.Id}");
                 Console.WriteLine($"Creditcard data: {creditcard.ToString()}");
+                Console.WriteLine($"CHECKOUT URL: {creditcard.RedirectUrl.UrlIframe}");
             }
             else
             {
